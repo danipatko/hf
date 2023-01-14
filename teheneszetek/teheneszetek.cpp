@@ -3,16 +3,6 @@
 
 using namespace std;
 
-void printarr(const vector<vector<int>>* v, int N, int M)
-{
-    for (int i = 0; i < N; i++)
-    {
-        for (int j = 0; j < M; j++)
-            cout << "[" << (*v)[i][j] << "]";
-        cout << "\n";
-    }
-}
-
 // use the index to get the following: https://cdn.discordapp.com/attachments/1044165803341254676/1061933206946979850/image.png
 void get_vector(int index, vector<int>* v, int M)
 {
@@ -22,7 +12,7 @@ void get_vector(int index, vector<int>* v, int M)
     int div = 1;
     for (int i = v->size() - 1; i >= 0; i--)
     {
-        (*v)[i] = (index / div) % M;
+        (*v)[i] = (index / div) % M; // note: divisions might be a performance issue
         div *= M;
     }
 }
@@ -40,10 +30,7 @@ int calc(vector<int>* current, vector<int>* teheneszetek, vector<int>* uzemek, v
         // at full capacity -> not possible, skip
         capacities[uzem_index] += (*teheneszetek)[i];
         if (capacities[uzem_index] > (*uzemek)[uzem_index])
-        {
-            cout << "\n[" << i << "] exceeded capacity\n";
             return -i;
-        }
         // add price to sum
         sum += (*teheneszetek)[i] * (*prices)[i][uzem_index];
     }
@@ -51,11 +38,16 @@ int calc(vector<int>* current, vector<int>* teheneszetek, vector<int>* uzemek, v
     return sum;
 }
 
-// e.g. index = 6, from = 1, M = 2 -> 8
-int skip(vector<int>* current, int from, int M)
+int skip(vector<int>* current, int from, int N, int M)
 {
-    // TODO: find the index, where the "from" column is incremented
-    return -1;
+    if (from == N - 1) return 0;
+    int sum = 0, curr = 0;
+    while (curr <= from)
+    {
+        sum += (*current)[curr] * pow(M, N - curr - 1);
+        curr++;
+    }
+    return sum + pow(M, N - from - 1);
 }
 
 int main()
@@ -77,9 +69,8 @@ int main()
     // time complexity is O(N^M)
     // instead of using recursion, we can run a single loop,
     // and determine the current position in each iteration
-
     vector<int> current(N), best(N);
-    int best_price = (1 << 30), price;
+    int best_price = (1 << 30), price, leap;
 
     for (int i = 0; i < pow(N, M); i++)
     {
@@ -88,11 +79,10 @@ int main()
 
         // if we find an impossible solution, we can just increment
         // i to avoid unneccessary computation
-        
         if (price <= 0)
         {
-            // TODO: skip
-            // cout << i << ") skipping to index " << skip(&current, -price, M, i) << '\n';
+            leap = skip(&current, -price, N, M);
+            i = leap == 0 ? i : leap;
             continue;
         }
 
@@ -101,11 +91,6 @@ int main()
             best_price = price;
             best = current;
         }
-
-        // for (int item : current)
-        //     cout << item << " ";
-        // cout << price << "\n";
-        // cout << "\n";
     }
 
     cout << best_price << "\n";
