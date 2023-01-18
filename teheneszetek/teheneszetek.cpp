@@ -1,10 +1,9 @@
-#include <iostream>
-#include <vector>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 // use the index to get the following: https://cdn.discordapp.com/attachments/1044165803341254676/1061933206946979850/image.png
-void get_vector(int index, vector<int>* v, int M)
+void get_vector(int index, vector<int> *v, int M)
 {
     // last element is index % M
     // before: (index / M) % M
@@ -19,7 +18,7 @@ void get_vector(int index, vector<int>* v, int M)
 
 // check the price
 // returns negative uzem index if case is not possible due to capacity
-int calc(vector<int>* current, vector<int>* teheneszetek, vector<int>* uzemek, vector<vector<int>>* prices)
+int calc(vector<int> *current, vector<int> *teheneszetek, vector<int> *uzemek, vector<vector<int>> *prices)
 {
     int sum = 0, uzem_index;
     vector<int> capacities(uzemek->size(), 0);
@@ -38,9 +37,10 @@ int calc(vector<int>* current, vector<int>* teheneszetek, vector<int>* uzemek, v
     return sum;
 }
 
-int skip(vector<int>* current, int from, int N, int M)
+int skip(vector<int> *current, int from, int N, int M)
 {
-    if (from == N - 1) return 0;
+    if (from == N - 1)
+        return 0;
     int sum = 0, curr = 0;
     while (curr <= from)
     {
@@ -62,7 +62,7 @@ int main()
         cin >> teheneszetek[i];
     for (int i = 0; i < M; i++)
         cin >> uzemek[i];
-    for (int i = 0; i < N ; i++)
+    for (int i = 0; i < N; i++)
         for (int j = 0; j < M; j++)
             cin >> prices[i][j];
 
