@@ -5,13 +5,18 @@ using namespace std;
 
 int main()
 {
-    int N, M;
+    int N, M, temp;
     cin >> N >> M;
-    vector<pair<int, int>> students(N);
-    vector<int> schools(M), caps(M), choices(N, -1), pain(N, -1);
+    vector<vector<int>> students(N, vector<int>(1));
+    vector<int> schools(M), caps(M), choices(N, -1);
 
     for (int i = 0; i < N; i++)
-        cin >> students[i].first >> students[i].second;
+    {
+        cin >> students[i][0];
+        cin >> temp;
+        if (temp) 
+            students[i].push_back(temp);
+    }
     for (int i = 0; i < M; i++)
         cin >> schools[i];
 
@@ -19,33 +24,27 @@ int main()
     int i = 0;
     while (i >= 0 && i < N)
     {
-        cout << i << "\n";
-        // try first school for i-th student
-        if ((pain[i] == -1 || students[i].second == 0) && caps[students[i].first - 1] + 1 <= schools[students[i].first - 1])
+        bool ok = false;
+        for (int j = choices[i] + 1; j < students[i].size(); j++)
         {
-            caps[students[i].first - 1]++;
-            choices[i] = students[i].first;
-            pain[i] = 0;
-            i++;
-            continue;
+            if (caps[students[i][j] - 1] + 1 <= schools[students[i][j] - 1])
+            {
+                caps[students[i][j] - 1]++;
+                choices[i++] = j;
+                ok = true;
+                break;
+            }
         }
-        // try second school
-        if (pain[i] == 0 && students[i].second != 0 && caps[students[i].second - 1] + 1 <= schools[students[i].second - 1])
+
+        if (!ok)
         {
-            caps[students[i].second - 1]++;
-            choices[i] = students[i].second;
-            pain[i] = 1;
-            i++;
-            continue;
+            choices[i--] = -1;
+            caps[students[i][choices[i]] - 1]--;
         }
-        // step back
-        pain[i] = -1;
-        i--;
-        caps[choices[i] - 1]--;
     }
 
-    for (auto& i : choices)
-        cout << i << " ";
+    for (int j = 0; j < choices.size(); j++)
+        cout << students[j][choices[j]] << " ";
     cout << "\n";
 }
 
