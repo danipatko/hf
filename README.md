@@ -19,3 +19,17 @@ Usage:
 ```sh
 mester.sh [SOURCE].cpp [INPUT]
 ```
+
+### SQLExport.bas
+
+(literally) Basic macro to dump SQL queries from access databases.
+
+Usage:
+
+-   Open desired `.accdb` file, you may need to [unblock](https://support.microsoft.com/en-gb/topic/a-potentially-dangerous-macro-has-been-blocked-0952faa0-37e7-4316-b61d-5b5ed6024216) macros (in explorer > right click > properties > check unblock)
+-   Go to **Database tools** tab and click **Macros**. This will open the VBA editor
+-   **Select File** > **Import file** _(CTRL + M)_, choose `SQLExport.bas` included in repo
+-   Save macro to project _(CTRL + S)_
+-   Run with _(F5)_, select `Export` then click **run**
+
+A messagebox should confirm that the queries have been saved to a `<path-to-file>.accdbsaved.sql` file.
