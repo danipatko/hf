@@ -9,6 +9,7 @@
 | [Mester > Haladó > Visszalépses keresés > 17. Iskolaválasztás](https://github.com/asztrikx/mester-linux/blob/master/Halad%C3%B3/Visszal%C3%A9p%C3%A9ses%20keres%C3%A9s/17.%20Iskolav%C3%A1laszt%C3%A1s/feladat.pdf) | [iskolavalasztas.cpp](./iskolavalasztas/iskolavalasztas.cpp)                                 |
 | N vezér rekurzívan                                                                                                                                                                                                  | [nqueen.cpp](./nqueen/nqueen.cpp)                                                            |
 | Páros munka nem rekurzívan                                                                                                                                                                                          | [pairwork.cpp](./pairwork/pairwork.cpp)                                                      |
+| [Access > Családfa](https://github.com/MolnAtt/SQL/tree/main/feladatsorok/Csaladfa)                                                                                                                                 | [csaladfa.accdbsaved.sql](./access/csaladfa.accdbsaved.sql)                                  |
 
 ### mester.sh
 
