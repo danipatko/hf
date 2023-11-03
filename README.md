@@ -1,5 +1,7 @@
 # hf
 
+## '22/23
+
 | Homework                                                                                                                                                                                                            | Source file                                                                                  |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | [Mester > Haladó > Mohó > 5. Autó](https://github.com/asztrikx/mester-linux/blob/master/Halad%C3%B3/Moh%C3%B3%20algoritmusok/5.%20Aut%C3%B3%20*/feladat.pdf)                                                        | [moho_auto.cpp](./mester-moho-auto/moho_auto/moho_auto.cpp)                                  |
@@ -10,6 +12,14 @@
 | N vezér rekurzívan                                                                                                                                                                                                  | [nqueen.cpp](./nqueen/nqueen.cpp)                                                            |
 | Páros munka nem rekurzívan                                                                                                                                                                                          | [pairwork.cpp](./pairwork/pairwork.cpp)                                                      |
 | [Access > Családfa](https://github.com/MolnAtt/SQL/tree/main/feladatsorok/Csaladfa)                                                                                                                                 | [csaladfa.accdbsaved.sql](./access/csaladfa.accdbsaved.sql)                                  |
+
+## '23/24
+
+| Homework                                                                                                                                                                                                      | Source file                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| [Mester > Haladó > Gráfok, mélységi bejárás > 60. Séta](https://github.com/asztrikx/mester-linux/blob/master/Halad%C3%B3/Gr%C3%A1fok%2C%20m%C3%A9lys%C3%A9gi%20bej%C3%A1r%C3%A1s/60.%20S%C3%A9ta/feladat.pdf) | [seta.cpp](./seta/seta.cpp) |
+
+---
 
 ### mester.sh
 
